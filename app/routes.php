@@ -598,4 +598,3 @@ return function (App $app) {
         }
     });    
 };
-

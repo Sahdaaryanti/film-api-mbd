@@ -44,8 +44,18 @@ $middleware = require __DIR__ . '/../app/middleware.php';
 $middleware($app);
 
 // Register routes
-$routes = require __DIR__ . '/../app/routes.php';
-$routes($app);
+$routesFiles = [
+    __DIR__ . '/../app/routes/films.php',
+    __DIR__ . '/../app/routes/genres.php',
+    __DIR__ . '/../app/routes/pemain.php',
+    __DIR__ . '/../app/routes/produsers.php',
+    __DIR__ . '/../app/routes/studios.php',
+];
+
+foreach ($routesFiles as $routesFile) {
+    $routes = require $routesFile;
+    $routes($app);
+}
 
 /** @var SettingsInterface $settings */
 $settings = $container->get(SettingsInterface::class);
